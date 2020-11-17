@@ -53,7 +53,7 @@ public class ConfirmBooking extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ConfirmBooking.this,MainActivity.class);
-                i.putExtra("msg","Your booking is done!");
+                i.putExtra("msg","Booking successfully!");
                 setResult(RESULT_OK,i);
                 finish();
             }

@@ -1,18 +1,30 @@
 package com.example.rmit_android_ass1;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
-public class BookingDetail extends AppCompatActivity {
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class BookingDetail extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +47,7 @@ public class BookingDetail extends AppCompatActivity {
         EditText timePicker = (EditText) findViewById(R.id.editTextTime);
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.optionList);
-
+        RadioButton lastRadioButton = (RadioButton) findViewById(R.id.option2);
 
         Button bookEvent = (Button) findViewById(R.id.bookEvent);
         bookEvent.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +61,8 @@ public class BookingDetail extends AppCompatActivity {
                      datePicker.setError("Required!");
                 } else if (timePicker.length() == 0){
                     timePicker.setError("Required!");
+                } else if (radioGroup.getCheckedRadioButtonId() == -1){
+                    lastRadioButton.setError("Required!");
                 } else {
                     int radioId = radioGroup.getCheckedRadioButtonId();
                     RadioButton radioButton = (RadioButton) findViewById(radioId);
@@ -70,4 +84,38 @@ public class BookingDetail extends AppCompatActivity {
         });
 
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void onDateClick(View view){
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.DialogTheme);
+        datePickerDialog.show();
+        datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#FF018786"));
+        datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor("#FF018786"));
+        datePickerDialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                EditText date = findViewById(R.id.editTextDate);
+                date.setText(String.format("%d-%d-%d", dayOfMonth, month, year));
+            }
+        });
+    }
+
+
+
+    public void onTimeClick(View view){
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, R.style.DialogTheme , new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+                ((EditText) findViewById(R.id.editTextTime)).setText(hourOfDay + ":" + minute);
+            }
+        },hour,minute,android.text.format.DateFormat.is24HourFormat(this));
+        timePickerDialog.show();
+        timePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#FF018786"));
+        timePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor("#FF018786"));
+    }
+
 }
