@@ -64,10 +64,11 @@
                     android:text=":"/>
 
                 <TextView
+                    android:id="@+id/confirmStudentName"
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
-                    android:text="Doan Son Lam"/>
+                    android:text="Doan Son Lam" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -88,10 +89,11 @@
                     android:text=":"/>
 
                 <TextView
+                    android:id="@+id/confirmStudentId"
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
-                    android:text="s3694650"/>
+                    android:text="s3694650" />
             </LinearLayout>
 
             <LinearLayout
@@ -113,10 +115,11 @@
                     android:text=":"/>
 
                 <TextView
+                    android:id="@+id/confirmCourseName"
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
-                    android:text="Android Development"/>
+                    android:text="Android Development" />
             </LinearLayout>
         </LinearLayout>
 
@@ -154,10 +157,11 @@
                     android:text=":"/>
 
                 <TextView
+                    android:id="@+id/confirmDate"
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
-                    android:text="10 June, 2020"/>
+                    android:text="10 June, 2020" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -178,10 +182,11 @@
                     android:text=":"/>
 
                 <TextView
+                    android:id="@+id/confirmTime"
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
-                    android:text="10AM - 11PM"/>
+                    android:text="10AM - 11PM" />
             </LinearLayout>
         </LinearLayout>
 
@@ -194,11 +199,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:textStyle="bold"
                 android:layout_margin="20dp"
                 android:drawableLeft="@android:drawable/ic_popup_sync"
-                android:text="Option"/>
+                android:text="Requirement"
+                android:textSize="24dp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -209,7 +214,7 @@
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="How"/>
+                    android:text="Option" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -218,23 +223,25 @@
                     android:text=":"/>
 
                 <TextView
+                    android:id="@+id/confirmOption"
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
-                    android:text="Face-to-face"/>
+                    android:text="Face-to-face" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
     <Button
+        android:id="@+id/buttonConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/white"
-        android:textColor="#292929"
+        android:gravity="center"
         android:text="Confirm"
-        android:gravity="center"/>
+        android:textColor="#292929" />
 
 
 

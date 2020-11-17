@@ -1,5 +1,6 @@
 package com.example.rmit_android_ass1;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -43,8 +44,19 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,course.getName(),Toast.LENGTH_LONG).show();
                 Intent i = new Intent(MainActivity.this,BookingDetail.class);
                 i.putExtra("course",course);
-                startActivity(i);
+                startActivityForResult(i,100);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100) {
+            if (resultCode == RESULT_OK) {
+                String response = (String) data.getExtras().get("msg");
+                Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

@@ -12,21 +12,24 @@
         android:layout_height="wrap_content"
         android:background="@color/teal_700"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="Android Development"
-            android:textStyle="bold"
-            android:textSize="24dp"
-            android:textColor="@color/white"
-            android:gravity="center_horizontal|bottom"/>
 
         <TextView
+            android:id="@+id/courseName"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center_horizontal|bottom"
+            android:text="Android Development"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/courseCode"
             android:layout_width="match_parent"
             android:layout_height="75dp"
+            android:gravity="center_horizontal|top"
             android:text="COSC 2510"
-            android:textColor="@color/white"
-            android:gravity="center_horizontal|top"/>
+            android:textColor="@color/white" />
 
 
     </LinearLayout>
@@ -37,15 +40,19 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/studentName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:inputType="text"
             android:hint="Name" />
 
         <EditText
+            android:id="@+id/studentID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:inputType="text"
             android:hint="Student ID" />
 
         <EditText
@@ -58,29 +65,42 @@
             android:inputType="date" />
 
         <EditText
+            android:id="@+id/editTextTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:layout_margin="20dp"
+            android:ems="10"
             android:hint="Time"
-            android:inputType="time"/>
+            android:inputType="time" />
+
 
         <RadioGroup
+            android:id="@+id/optionList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="20dp">
+            android:layout_margin="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Option:"
+                android:textStyle="bold" />
 
             <RadioButton
-                android:layout_width="match_parent"
+                android:id="@+id/option1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Face-to-face"
-                android:layout_weight="1"/>
+                android:layout_weight="2"
+                android:text="Face-to-face" />
+
             <RadioButton
-                android:layout_width="match_parent"
+                android:id="@+id/option2"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Online"
-                android:layout_weight="1"/>
+                android:layout_weight="2"
+                android:text="Online" />
 
         </RadioGroup>
 
@@ -91,14 +111,15 @@
         android:layout_height="match_parent">
 
         <Button
+            android:id="@+id/bookEvent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/teal_700"
             android:text="Book"
-            android:textStyle="bold"
-            android:backgroundTint="@color/teal_700" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
