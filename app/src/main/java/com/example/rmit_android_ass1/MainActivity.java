@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         courses.add(new Course(2,"IOS Development","COSC1112"));
         courses.add(new Course(3,"Practical Data Science","COSC1113"));
         courses.add(new Course(4,"Web Programming","COSC1114"));
+        courses.add(new Course(5,"Algorithm & Analysis","COSC1124"));
 
 
         courseListViewAdapter = new CourseListViewAdapter(courses);

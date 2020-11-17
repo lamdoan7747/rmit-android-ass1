@@ -11,26 +11,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
-        android:layout_marginHorizontal="10dp"
+        android:background="@color/teal_700"
         android:orientation="horizontal">
 
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:gravity="left|bottom"
+            android:layout_weight="1"
+            android:layout_marginVertical="20dp"
+            android:gravity="center"
             android:text="Courses"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="30sp" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Pending"
-            android:gravity="right|bottom"
-            android:layout_weight="1"
-            android:textSize="16dp"/>
 
     </LinearLayout>
 
@@ -38,6 +31,8 @@
         android:id="@+id/listCourse"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:drawable="@color/teal_700"
+        android:state_pressed="true"
          />
 
 

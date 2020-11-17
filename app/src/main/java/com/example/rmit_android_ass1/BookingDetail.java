@@ -1,5 +1,6 @@
 package com.example.rmit_android_ass1;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -75,9 +76,8 @@ public class BookingDetail extends AppCompatActivity{
                     i.putExtra("time",timePicker.getText().toString());
                     i.putExtra("option",radioButton.getText().toString());
 
-                    i.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
-                    startActivity(i);
-                    finish();
+                    startActivityForResult(i,200);
+
 
                 }
             }
@@ -85,9 +85,25 @@ public class BookingDetail extends AppCompatActivity{
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 200) {
+            if (resultCode == RESULT_OK) {
+                String response = (String) data.getExtras().get("msg");
+                Toast.makeText(BookingDetail.this, response, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(BookingDetail.this,MainActivity.class);
+                intent.putExtra("msg",response);
+                setResult(RESULT_OK,intent);
+                finish();
+            }
+        }
+    }
+
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onDateClick(View view){
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.DialogTheme);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this);
         datePickerDialog.show();
         datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#FF018786"));
         datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor("#FF018786"));
@@ -107,7 +123,7 @@ public class BookingDetail extends AppCompatActivity{
         final int hour = calendar.get(Calendar.HOUR_OF_DAY);
         final int minute = calendar.get(Calendar.MINUTE);
 
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this, R.style.DialogTheme , new TimePickerDialog.OnTimeSetListener() {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
                 ((EditText) findViewById(R.id.editTextTime)).setText(hourOfDay + ":" + minute);
