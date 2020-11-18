@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">rmit_android_ass1</string>
+    <string name="errorOfView">Required!</string>
+    <string name="confirmTitle">Confirm</string>
+    <string name="messageDialog">Do you want to make a booking?</string>
+    <string name="bookingStatus">Booking successfully!</string>
 </resources>

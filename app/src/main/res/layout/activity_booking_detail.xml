@@ -44,7 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:inputType="text"
+            android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:inputType="text|textCapSentences|textNoSuggestions"
             android:hint="Name" />
 
         <EditText
@@ -52,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:inputType="text"
+            android:inputType="text|textNoSuggestions"
             android:hint="Student ID" />
 
         <EditText
@@ -62,7 +63,7 @@
             android:ems="10"
             android:layout_margin="20dp"
             android:hint="Date"
-            android:inputType="date"
+            android:inputType="date|none"
             android:onClick="onDateClick"/>
 
         <EditText
@@ -72,7 +73,7 @@
             android:layout_margin="20dp"
             android:ems="10"
             android:hint="Time"
-            android:inputType="time"
+            android:inputType="time|none"
             android:onClick="onTimeClick"/>
 
 

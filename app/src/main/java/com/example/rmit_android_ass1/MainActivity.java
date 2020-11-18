@@ -16,8 +16,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Course> courses;
-    CourseListViewAdapter courseListViewAdapter;
+    private ArrayList<Course> courses;
+    private CourseListViewAdapter courseListViewAdapter;
 
 
     @Override
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // create list of course
         courses = new ArrayList<>();
         courses.add(new Course(1,"Android Development","COSC1111"));
         courses.add(new Course(2,"IOS Development","COSC1112"));
@@ -32,12 +33,10 @@ public class MainActivity extends AppCompatActivity {
         courses.add(new Course(4,"Web Programming","COSC1114"));
         courses.add(new Course(5,"Algorithm & Analysis","COSC1124"));
 
-
+        // set adapter for course list
         courseListViewAdapter = new CourseListViewAdapter(courses);
-
         ListView listViewCourse = (ListView) findViewById(R.id.listCourse);
         listViewCourse.setAdapter(courseListViewAdapter);
-
         listViewCourse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -55,8 +54,10 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100) {
             if (resultCode == RESULT_OK) {
-                String response = (String) data.getExtras().get("msg");
-                Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
+                if (data != null) {
+                    String response = (String) data.getExtras().get("msg");
+                    Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }

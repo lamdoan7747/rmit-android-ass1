@@ -15,58 +15,60 @@ import android.widget.TextView;
 
 public class ConfirmBooking extends AppCompatActivity {
 
-    TextView confirmStudentName,confirmStudentId,
+    private TextView confirmStudentName,confirmStudentId,
             confirmCourseName,confirmDate,
             confirmTime,confirmOption;
-
+    private Button buttonConfirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_booking);
-
-
-
         Intent i = getIntent();
-        String studentName = (String) i.getExtras().get("studentName");
-        String studentId = (String) i.getExtras().get("studentID");
-        String courseName = (String) i.getExtras().get("courseName");
-        String date = (String) i.getExtras().get("date");
-        String time = (String) i.getExtras().get("time");
-        String option = (String) i.getExtras().get("option");
 
-        confirmStudentName = (TextView) findViewById(R.id.confirmStudentName);
+        // set view of student name
+        String studentName = (String) i.getExtras().get("studentName");
+        confirmStudentName = findViewById(R.id.confirmStudentName);
         confirmStudentName.setText(studentName);
 
-        confirmStudentId = (TextView) findViewById(R.id.confirmStudentId);
+        // set view of student ID
+        String studentId = (String) i.getExtras().get("studentID");
+        confirmStudentId = findViewById(R.id.confirmStudentId);
         confirmStudentId.setText(studentId);
 
-        confirmCourseName = (TextView) findViewById(R.id.confirmCourseName);
+        // set view of course name
+        String courseName = (String) i.getExtras().get("courseName");
+        confirmCourseName = findViewById(R.id.confirmCourseName);
         confirmCourseName.setText(courseName);
 
-        confirmDate = (TextView) findViewById(R.id.confirmDate);
+        // set view of date
+        String date = (String) i.getExtras().get("date");
+        confirmDate = findViewById(R.id.confirmDate);
         confirmDate.setText(date);
 
-        confirmTime = (TextView) findViewById(R.id.confirmTime);
+        // set view of time
+        String time = (String) i.getExtras().get("time");
+        confirmTime = findViewById(R.id.confirmTime);
         confirmTime.setText(time);
 
-        confirmOption = (TextView) findViewById(R.id.confirmOption);
+        // set view of option
+        String option = (String) i.getExtras().get("option");
+        confirmOption = findViewById(R.id.confirmOption);
         confirmOption.setText(option);
 
-        Button buttonConfirm = (Button) findViewById(R.id.buttonConfirm);
+        buttonConfirm = findViewById(R.id.buttonConfirm);
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ConfirmBooking.this);
-
                 alertDialogBuilder
-                        .setTitle("Confirm")
-                        .setMessage("Do you want to make a booking?")
+                        .setTitle(R.string.confirmTitle)
+                        .setMessage(R.string.messageDialog)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Intent intent = new Intent(ConfirmBooking.this,MainActivity.class);
-                                intent.putExtra("msg","Booking successfully!");
+                                intent.putExtra("msg",getString(R.string.bookingStatus));
                                 intent.putExtra("requestCode","200");
                                 setResult(RESULT_OK,intent);
                                 finish();
